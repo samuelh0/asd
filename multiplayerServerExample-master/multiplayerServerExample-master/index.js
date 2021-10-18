@@ -203,6 +203,8 @@ io.on('connection', (socket) => {
 
   // give each socket a random identifier so that we can determine who is who when
   // we're sending messages back and forth!
+  socket.emit('requestUserID')
+  socket.userID = String();
   socket.id = uuid();
   console.log('a user connected');
 
@@ -220,7 +222,6 @@ io.on('connection', (socket) => {
       }
     }
   });
-
   /**
    * The game has started! Give everyone their default values and tell each client
    * about each player
